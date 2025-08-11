@@ -1,0 +1,82 @@
+<div class="d-flex flex-column min-vh-100">
+
+  <header class="bg-primary text-white shadow-sm sticky-top">
+    <div class="container">
+      <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <a routerLink="/home" class="navbar-brand h4 m-0 fw-bold text-decoration-none">VidaSegura</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="navbar-nav ms-auto d-flex flex-column flex-md-row gap-2 gap-md-3">
+            <a routerLink="/servicios" class="nav-link text-white">Servicios</a>
+            <a routerLink="/contacto" class="nav-link text-white">Contacto</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-grow-1">
+    <div class="container py-5">
+      <div class="mb-4">
+        <a routerLink="/home" class="btn btn-outline-primary">
+          Volver al Inicio
+        </a>
+      </div>
+    </div>
+    <div class="container py-5">
+      <h1 class="text-center mb-5 text-primary">Nuestros Servicios de Seguros de Vida</h1>
+
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm border-primary">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title text-primary">Seguro de Vida Basico</h5>
+              <p class="card-text flex-grow-1">
+                Cobertura esencial para proteger a tu familia ante cualquier imprevisto.
+              </p>
+              <p class="fw-bold fs-5 text-success mt-3">$ 10,000 / año</p>
+              <button class="btn btn-primary mt-auto">Contratar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm border-primary">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title text-primary">Seguro de Vida Estandar</h5>
+              <p class="card-text flex-grow-1">
+                Cobertura extendida con beneficios adicionales y asistencia medica.
+              </p>
+              <p class="fw-bold fs-5 text-success mt-3">$ 18,000 / año</p>
+              <button class="btn btn-primary mt-auto">Contratar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm border-primary">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title text-primary">Seguro Premium</h5>
+              <p class="card-text flex-grow-1">
+                Proteccion total, incluyendo cobertura internacional y asistencia VIP.
+              </p>
+              <p class="fw-bold fs-5 text-success mt-3">$ 30,000 / año</p>
+              <button class="btn btn-primary mt-auto">Contratar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-primary text-white text-center py-4">
+    <div class="container">
+      <p class="mb-0">© 2025 VidaSegura S.A. | Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+</div>

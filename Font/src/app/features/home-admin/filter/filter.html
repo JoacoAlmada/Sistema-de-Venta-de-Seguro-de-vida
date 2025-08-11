@@ -1,0 +1,68 @@
+<div class="container mt-3 mb-4">
+  <form (ngSubmit)="aplicarFiltro()" class="border p-4 rounded shadow-sm bg-light">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label for="genero" class="form-label">Genero</label>
+        <select id="genero" class="form-control" [(ngModel)]="filtro.genero" name="genero">
+          <option value="">Todos</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="estado" class="form-label">Estado</label>
+        <select id="estado" class="form-control" [(ngModel)]="filtro.estado" name="estado">
+          <option value=""> Todos</option>
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="seguro" class="form-label">Seguro</label>
+        <select id="seguro" class="form-control" [(ngModel)]="filtro.seguro" name="seguro">
+          <option value=""> Todos</option>
+          <option value="Basico">Basico</option>
+          <option value="Estandar">Estandar</option>
+          <option value="Premium">Premium</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="usaLentes" class="form-label">Usa lentes</label>
+        <select id="usaLentes" class="form-select" [(ngModel)]="filtro.usa_lentes" name="usa_lentes">
+          <option [ngValue]="null">Todos</option>
+          <option [ngValue]="true">Si</option>
+          <option [ngValue]="false">No</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="maneja" class="form-label">Maneja</label>
+        <select id="maneja" class="form-select" [(ngModel)]="filtro.maneja" name="maneja">
+          <option [ngValue]="null">Todos</option>
+          <option [ngValue]="true">Si</option>
+          <option [ngValue]="false">No</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="diabetico" class="form-label">Diabetico</label>
+        <select id="diabetico" class="form-select" [(ngModel)]="filtro.diabetico" name="diabetico">
+          <option [ngValue]="null">Todos</option>
+          <option [ngValue]="true">Si</option>
+          <option [ngValue]="false">No</option>
+        </select>
+      </div>
+      <div class="col-md-12">
+        <label for="otraEnfermedad" class="form-label">Otra enfermedad</label>
+        <select id="otraEnfermedad" class="form-select" [(ngModel)]="filtro.otra_enfermedad" name="otra_enfermedad">
+          <option [ngValue]="null">Todos</option>
+          <option [ngValue]="true">Si</option>
+          <option [ngValue]="false">No</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mt-4 d-flex justify-content-between">
+      <button type="submit" class="btn btn-primary">Aplicar filtro</button>
+      <button type="button" class="btn btn-secondary" (click)="limpiarFiltro()">Limpiar</button>
+    </div>
+  </form>
+</div>

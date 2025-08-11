@@ -1,0 +1,94 @@
+<header class="bg-primary text-white shadow-sm sticky-top">
+  <div class="container">
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <a routerLink="/home" class="navbar-brand h4 m-0 fw-bold text-decoration-none">VidaSegura</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="navbar-nav ms-auto d-flex flex-column flex-md-row gap-2 gap-md-3">
+          <a routerLink="/servicios" class="nav-link text-white">Servicios</a>
+          <a routerLink="/contacto" class="nav-link text-white">Contacto</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="flex-grow-1">
+  <div class="container py-5">
+    <div class="mb-4">
+      <a routerLink="/home" class="btn btn-outline-primary">
+        Volver al Inicio
+      </a>
+    </div>
+  </div>
+  <div class="container py-5">
+    <h1 class="text-center mb-5 text-primary">Contactanos</h1>
+
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <form class="mb-4">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre Completo</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Tu nombre" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Correo Electronico</label>
+            <input type="email" class="form-control" id="email" placeholder="ejemplo@correo.com" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="asunto" class="form-label">Asunto</label>
+            <input type="text" class="form-control" id="asunto" placeholder="Motivo de contacto" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="mensaje" class="form-label">Mensaje</label>
+            <textarea class="form-control" id="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 mb-4">Enviar Mensaje</button>
+        </form>
+
+        <div class="bg-light rounded shadow-sm p-4">
+          <h5 class="text-primary mb-3">Informacion de contacto</h5>
+          <div class="row g-3">
+            <div class="col-12">
+              <p class="mb-2"><strong>📞 Telefono:</strong> +54 9 11 111 1111</p>
+            </div>
+            <div class="col-12">
+              <p class="mb-2"><strong>✉️ Email:</strong> contacto&#64;vidasegura.com</p>
+            </div>
+            <div class="col-12">
+              <p class="mb-0"><strong>📍 Direccion:</strong> Av. Segura 1234, Ciudad Autonoma de Buenos Aires</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-primary text-white rounded shadow-sm p-4 mt-4">
+          <h5 class="mb-3">Horarios de Atencion</h5>
+          <div class="row g-2">
+            <div class="col-6">
+              <p class="mb-1"><strong>Lunes a Viernes:</strong></p>
+              <p class="mb-0">9:00 - 18:00 hs</p>
+            </div>
+            <div class="col-6">
+              <p class="mb-1"><strong>Sabados:</strong></p>
+              <p class="mb-0">9:00 - 13:00 hs</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="bg-primary text-white text-center py-4 mt-auto">
+  <div class="container">
+    <p class="mb-0">© 2025 VidaSegura S.A. | Todos los derechos reservados</p>
+  </div>
+</footer>

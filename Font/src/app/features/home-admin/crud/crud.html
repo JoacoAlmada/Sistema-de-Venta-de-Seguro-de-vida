@@ -1,0 +1,251 @@
+<div class="bg-primary text-white py-4">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h1 class="h2 fw-bold mb-2">Gestion de Usuarios</h1>
+        <p class="mb-0 opacity-75">CRUD del Sistema - VidaSegura S.A.</p>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-md-end gap-3">
+          <span class="badge bg-success fs-6 px-3 py-2">Sistema Operativo</span>
+          <a routerLink="/home-admin" class="btn btn-outline-light">
+            <svg width="16" height="16" fill="currentColor" class="me-2" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+            </svg>
+            Panel de Admin
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container py-4">
+  <div class="card border-0 shadow-sm mb-4">
+    <div class="card-header bg-white border-0 pb-3">
+      <div class="d-flex align-items-center">
+        <div class="bg-info p-2 rounded me-3">
+          <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
+            <path d="M14,12V19.88C14.04,20.18 13.94,20.5 13.71,20.71C13.32,21.1 12.69,21.1 12.3,20.71L10.29,18.7C10.06,18.47 9.96,18.16 10,17.87V12H9.97L4.21,4.62C3.87,4.19 3.95,3.56 4.38,3.22C4.57,3.08 4.78,3 5,3V3H19V3C19.22,3 19.43,3.08 19.62,3.22C20.05,3.56 20.13,4.19 19.79,4.62L14.03,12H14Z"/>
+          </svg>
+        </div>
+        <h5 class="card-title mb-0 fw-bold">Filtros y Busqueda</h5>
+      </div>
+    </div>
+    <div class="card-body pt-0">
+      <app-filter (filtroAplicado)="cargarUsuarios($event)"></app-filter>
+    </div>
+  </div>
+
+
+  <h2 class="h4 fw-bold text-dark mb-4">Listado de Usuarios</h2>
+  <div class="row g-4">
+    <div class="col-md-4" *ngFor="let user of usuarios">
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="card-header bg-white border-0 pb-3">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+              <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                <svg width="20" height="20" fill="currentColor" class="text-primary" viewBox="0 0 24 24">
+                  <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"/>
+                </svg>
+              </div>
+              <h5 class="card-title mb-0 fw-bold">{{ user.nombre_completo }}</h5>
+            </div>
+            <span class="badge bg-success bg-opacity-10 text-success small">Activo</span>
+          </div>
+        </div>
+
+        <div class="card-body pt-0">
+          <div class="row g-2 mb-3">
+            <div class="col-12">
+              <div class="border rounded p-2 bg-light">
+                <small class="text-muted d-block">IDENTIFICACION</small>
+                <span class="fw-medium">{{ user.identificacion }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-2 mb-3">
+            <div class="col-6">
+              <div class="border rounded p-2 bg-light">
+                <small class="text-muted d-block">EDAD</small>
+                <span class="fw-medium">{{ user.edad }} años</span>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="border rounded p-2 bg-light">
+                <small class="text-muted d-block">GENERO</small>
+                <span class="fw-medium">{{ user.genero }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3" *ngIf="user.email">
+            <small class="text-muted d-block mb-1">EMAIL</small>
+            <span class="small text-break">{{ user.email }}</span>
+          </div>
+        </div>
+
+        <div class="card-footer bg-light border-0">
+          <div class="d-flex justify-content-between gap-2">
+            <button class="btn btn-outline-warning btn-sm flex-fill" (click)="editarUsuario(user)">
+              <svg width="14" height="14" fill="currentColor" class="me-1" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708L10.5 8.207l2.646 2.647a.5.5 0 0 1-.708.708L10.793 9.207l-2.646 2.647a.5.5 0 0 1-.708-.708L9.793 8.854 7.146 6.207a.5.5 0 1 1 .708-.708L10.207 7.854l2.647-2.646a.5.5 0 0 1 .708 0z"/>
+              </svg>
+              Editar
+            </button>
+            <button class="btn btn-outline-danger btn-sm flex-fill" (click)="borrarUsuario(user)">
+              <svg width="14" height="14" fill="currentColor" class="me-1" viewBox="0 0 16 16">
+                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+              </svg>
+              Borrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editUsuarioModal" tabindex="-1" aria-labelledby="editUsuarioModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content border-0 shadow">
+      <form (ngSubmit)="guardarEdicion()" #formEdit="ngForm">
+        <div class="modal-header bg-primary text-white">
+          <div class="d-flex align-items-center">
+            <svg width="20" height="20" fill="currentColor" class="me-2" viewBox="0 0 24 24">
+              <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"/>
+            </svg>
+            <h5 class="modal-title mb-0 fw-bold">Editar Usuario</h5>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="mb-4">
+            <h6 class="fw-bold text-dark mb-3 d-flex align-items-center">
+              <svg width="16" height="16" fill="currentColor" class="text-primary me-2" viewBox="0 0 16 16">
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+              </svg>
+              Informacion Personal
+            </h6>
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-medium">Nombre completo</label>
+                <input type="text" class="form-control" [(ngModel)]="usuarioEditando.nombre_completo" name="nombre_completo" required />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-medium">Contraseña</label>
+                <input type="text" class="form-control" [(ngModel)]="usuarioEditando.contrasenia" name="contrasenia" required />
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fw-medium">Edad</label>
+                <input type="number" class="form-control" [(ngModel)]="usuarioEditando.edad" name="edad" required/>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fw-medium">Genero</label>
+                <input type="text" class="form-control" [(ngModel)]="usuarioEditando.genero" name="genero" required/>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fw-medium">Estado</label>
+                <select class="form-select" [(ngModel)]="usuarioEditando.estado" name="estado" required>
+                  <option value="Activo">Activo</option>
+                  <option value="Inactivo">Inactivo</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fw-medium">Seguro</label>
+                <select class="form-select" [(ngModel)]="usuarioEditando.seguro" name="seguro" required>
+                  <option value="Basico">Basico</option>
+                  <option value="Estandar">Estandar</option>
+                  <option value="Premium">Premium</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h6 class="fw-bold text-dark mb-3 d-flex align-items-center">
+              <svg width="16" height="16" fill="currentColor" class="text-success me-2" viewBox="0 0 16 16">
+                <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2z"/>
+              </svg>
+              Información de Contacto
+            </h6>
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-medium">Correo</label>
+                <input type="email" class="form-control" [(ngModel)]="usuarioEditando.email" name="email" required />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-medium">Telefono</label>
+                <input type="text" class="form-control" [(ngModel)]="usuarioEditando.telefono" name="telefono" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h6 class="fw-bold text-dark mb-3 d-flex align-items-center">
+              <svg width="16" height="16" fill="currentColor" class="text-danger me-2" viewBox="0 0 16 16">
+                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+              </svg>
+              Informacion Medica
+            </h6>
+
+            <div class="row g-3 mb-3">
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" [(ngModel)]="usuarioEditando.maneja" name="maneja" />
+                  <label class="form-check-label fw-medium">Maneja</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" [(ngModel)]="usuarioEditando.usa_lentes" name="usa_lentes" />
+                  <label class="form-check-label fw-medium">Usa lentes</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" [(ngModel)]="usuarioEditando.diabetico" name="diabetico" />
+                  <label class="form-check-label fw-medium">Diabetico</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" [(ngModel)]="usuarioEditando.otra_enfermedad" name="otra_enfermedad" />
+                  <label class="form-check-label fw-medium">Otra enfermedad</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-md-12">
+                <label class="form-label fw-medium">¿Cuál enfermedad?</label>
+                <input type="text" class="form-control" [(ngModel)]="usuarioEditando.cual_enfermedad" name="cual_enfermedad" placeholder="Especificar enfermedad si aplica" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer bg-light">
+          <button type="submit" class="btn btn-primary">
+            <svg width="14" height="14" fill="currentColor" class="me-1" viewBox="0 0 16 16">
+              <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05L7.477 9.417 5.384 7.323a.75.75 0 1 1 1.06-1.06L7.88 7.797l4.09-4.05z"/>
+            </svg>
+            Guardar Cambios
+          </button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <svg width="14" height="14" fill="currentColor" class="me-1" viewBox="0 0 16 16">
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
